@@ -1,0 +1,25 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - master  # Run this when code is pushed to the master branch
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted  # This means it runs on your laptop runner
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the app (optional)
+        run: npm run build || echo "No build step"
+
+      - name: Restart app with PM2
+        run: |
+          npm install -g pm2
+          pm2 restart myapp || pm2 start server.js --name myapp
