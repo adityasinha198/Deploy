@@ -10,9 +10,6 @@ jobs:
     runs-on: self-hosted  # This means it runs on your laptop runner
 
     steps:
-      - name: Log current directory
-        run: echo "Current directory: $(pwd)"
-
       - name: Checkout code
         uses: actions/checkout@v4
 
