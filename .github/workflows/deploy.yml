@@ -22,4 +22,4 @@ jobs:
       - name: Restart app with PM2
         run: |
           npm install -g pm2
-          pm2 restart myapp || pm2 start server.js --name myapp
+          pm2 start index.js --name deploy-app
